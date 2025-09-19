@@ -1,29 +1,42 @@
-# README #
+Project: Record Store Sales Tracker
+Development Team
+Business Client: Chris Hopkins		
+Lead Developer: Farhan
+Quality Control: Fardin Sahriar Al Rafat
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Description
+Eclectic Echoes is a small, independent record store and this application will track the store’s sales.
 
-### What is this repository for? ###
+Color
+Main Color: #1E2A38 (Midnight Blue)
+Secondary Color: #7DA1BF (Cool Slate Blue)
+Accent Color: #F76C5E (Coral Red)
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Required Fields
+This will be a list of fields and their datatype (class design format). There are expected to be a minimum of six fields.
+-id: int //primary key
+-transactionDate: String Note: yyyy-MM-dd
+-customerName: String
+-albumTitle: String
+-artistName: String
+-formatType: String
+-albumPrice: double
+-giftWrapped: boolean
+-subtotal: double
+-totalCost: double
 
-### How do I get set up? ###
+Calculation
+Each transaction is for the purchase of one album.  The cost of the album (albumPrice) is determined by formatType which are stored in constants.  The same album on Vinyl, CD, or cassette will be priced differently.  However, every album is the same price based on the format.  The customer can choose to pay an additional fee of $2 if they would like the album gift wrapped.  The tax amount is a constant (taxRate) representing 15% sales tax. The prices are as follows:
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+Vinyl: $15
+CD:  $10
+Cassette: $5
 
-### Contribution guidelines ###
+subtotal = albumPrice + (giftWrapped ? giftWrapFee :  0)
+totalCost = subtotal * (1 + taxRate)
 
-* Writing tests
-* Code review
-* Other guidelines
+Sample calculation:
+A customer orders an album on vinyl and wants it giftwrapped.
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+ subtotal = 15 + (2)
+totalCost = subtotal * (1 + taxRate) 
