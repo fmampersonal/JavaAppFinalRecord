@@ -7,25 +7,23 @@ use cis2232_record_store;
 -- table with 7-9 fields.
 --------------------------------------------------------------------------------
 
-CREATE TABLE SkillsAssessmentSquashTechnical
+CREATE TABLE RecordStoreSalesTracker
 (
     id                int(5),
-    assessmentDate    varchar(10) NOT NULL COMMENT 'yyyy-MM-dd',
-    createdDateTime   varchar(20) NOT NULL COMMENT 'yyyy-MM-dd hh:mm:ss',
-    athleteName       varchar(50) NOT NULL COMMENT 'Athletes name',
-    assessorName      varchar(50) NOT NULL COMMENT 'Athletes name',
-    forehandDrives    int(5) COMMENT 'Number of forehand drives',
-    backhandDrives    int(5) COMMENT 'Number of backhand drives',
-    forehandVolleyMax int(5) COMMENT 'Max number of forehand volleys',
-    forehandVolleySum int(5) COMMENT 'Sum of forehand volleys',
-    backhandVolleyMax int(5) COMMENT 'Max number of backhand volleys',
-    backhandVolleySum int(5) COMMENT 'Sum of backhand volleys',
-    technicalScore    int(5) COMMENT 'Score calculated at submission'
-) COMMENT 'This table holds technical skills assessment details';
+    transactionDate    varchar(10) NOT NULL COMMENT 'yyyy-MM-dd',
+    customerName       varchar(50) NOT NULL COMMENT 'Athletes name',
+    artistName      varchar(50) NOT NULL COMMENT 'Name of artist or band associated with the album',
+    formatType varchar(10) COMMENT 'Media format (Vinyl, CD, or Cassette)',
+    albumPrice double(10) COMMENT 'Sum of forehand volleys',
+    giftWrapped boolean(2) COMMENT 'Does the customer want it gift wrapped?',
+    subtotal int(50) COMMENT 'Cost of quantity multiplied by unit price',
+    totalCost    double(3) COMMENT 'Total cost of transaction including tax'
+) COMMENT 'This table tracks the sales in the record store';
 
-ALTER TABLE SkillsAssessmentSquashTechnical
+
+ALTER TABLE RecordStoreSalesTracker
     ADD PRIMARY KEY (id);
-ALTER TABLE SkillsAssessmentSquashTechnical
+ALTER TABLE RecordStoreSalesTracker
     MODIFY id int(4) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key',
     AUTO_INCREMENT = 1;
 
@@ -39,16 +37,16 @@ ALTER TABLE SkillsAssessmentSquashTechnical
 -- insert into SkillsAssessmentSquashTechnical values(0, '2022-08-08',	'2022-08-08 11:35:15','Maria Smith','BJ MacLean',		17,	18,	12,	77,	8,	63,0);
 -- insert into SkillsAssessmentSquashTechnical values(0, '2022-08-22',	'2022-08-20 11:35:15','Chad Collins','BJ MacLean',		14,	11,	10,	86,	16,	87,0);
 
-INSERT INTO SkillsAssessmentSquashTechnical (id, assessmentDate, createdDateTime, athleteName, assessorName,
-                                             forehandDrives, backhandDrives, forehandVolleyMax, forehandVolleySum,
-                                             backhandVolleyMax, backhandVolleySum, technicalScore)
-VALUES (1, '2022-08-22', '2023-11-07 01:38:48', 'Maria Smith', 'BJ MacLean', 11, 5, 14, 78, 6, 59, 1085),
-       (2, '2022-08-11', '2023-11-07 01:38:52', 'Rhonda Jones', 'BJ MacLean', 5, 7, 4, 36, 5, 38, 622),
-       (3, '2022-08-07', '2023-11-07 01:38:56', 'Chad Collins', 'BJ MacLean', 8, 8, 4, 37, 5, 42, 707),
-       (4, '2022-08-07', '2023-11-07 01:38:59', 'Rhonda Jones', 'BJ MacLean', 12, 8, 9, 53, 4, 42, 879),
-       (5, '2022-08-07', '2023-11-07 01:39:01', 'Chad Collins', 'BJ MacLean', 8, 10, 7, 52, 3, 26, 740),
-       (6, '2022-08-08', '2023-11-07 01:39:04', 'Rhonda Jones', 'BJ MacLean', 10, 8, 8, 61, 6, 57, 972),
-       (7, '2022-08-10', '2023-11-07 01:39:07', 'Chad Collins', 'BJ MacLean', 17, 14, 8, 70, 13, 84, 1403),
-       (8, '2022-08-08', '2023-11-07 01:39:10', 'Maria Smith', 'BJ MacLean', 17, 18, 12, 77, 8, 63, 1385),
-       (9, '2022-08-22', '2023-11-07 01:38:44', 'Chad Collins', 'BJ MacLean', 14, 11, 10, 86, 16, 87, 1448);
+INSERT INTO RecordStoreSalesTracker (id, transactionDate, customerName, artistName, formatType,
+                                             albumPrice, giftWrapped, subtotal, totalCost)
+
+VALUES (1, '2022-08-22', 'A', 'Maria Smith', 'Vinyl', 11, 0, 14, 78, 6, 59, 1085),
+       (2, '2022-08-11', 'B', 'Rhonda Jones', 'Cd', 5, 2, 4, 36, 5, 38, 622),
+       (3, '2022-08-07', 'C', 'Chad Collins', 'Vinyl', 8, 0, 4, 37, 5, 42, 707),
+       (4, '2022-08-07', 'D', 'Rhonda Jones', 'Vinyl', 12, 2, 9, 53, 4, 42, 879),
+       (5, '2022-08-07', 'E', 'Chad Collins', 'Vinyl', 8, 2, 7, 52, 3, 26, 740),
+       (6, '2022-08-08', 'F', 'Rhonda Jones', 'Vinyl', 10, 0, 8, 61, 6, 57, 972),
+       (7, '2022-08-10', 'G', 'Chad Collins', 'Cd', 17, 0, 8, 70, 13, 84, 1403),
+       (8, '2022-08-08', 'H', 'Maria Smith', 'Cd', 17, 2, 12, 77, 8, 63, 1385),
+       (9, '2022-08-22', 'I', 'Chad Collins', 'Cd', 14, 2, 10, 86, 16, 87, 1448);
 
