@@ -5,7 +5,7 @@ Lead Developer: Farhan
 Quality Control: Fardin Sahriar Al Rafat
 
 Description
-Eclectic Echoes is a small, independent record store and this application will track the storeâ€™s sales.
+Eclectic Echoes is a small, independent record store and this application will track the storeÕs sales.
 
 Color
 Main Color: #1E2A38 (Midnight Blue)
@@ -40,3 +40,7 @@ A customer orders an album on vinyl and wants it giftwrapped.
 
  subtotal = 15 + (2)
 totalCost = subtotal * (1 + taxRate) 
+
+Report requirements
+
+Provide a list of albums by a particular artist in descending order of albums sold.Ê The user will enter an artist name and the program will provide a list of albums by that artist that have been sold ordered by number of units sold in descending order
