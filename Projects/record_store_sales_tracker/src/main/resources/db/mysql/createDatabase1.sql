@@ -6,7 +6,7 @@ CREATE TABLE RecordStoreSalesTracker
 (
     id                int(5),
     transactionDate    varchar(10) NOT NULL COMMENT 'yyyy-MM-dd',
-    customerName       varchar(50) NOT NULL COMMENT 'Athletes name',
+    customerName       varchar(50) NOT NULL COMMENT 'Customer name',
     artistName      varchar(50) NOT NULL COMMENT 'Name of artist or band associated with the album',
     formatType varchar(10) COMMENT 'Media format (Vinyl, CD, or Cassette)',
     albumPrice float(10) COMMENT 'Sum of forehand volleys',

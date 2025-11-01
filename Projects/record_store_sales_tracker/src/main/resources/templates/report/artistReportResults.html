@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <title>Artist Report Results</title>
+</head>
+<body>
+<style scoped>
+    table { border-collapse: collapse; margin: 0 auto; }
+    th, td { padding: 8px 12px; border-bottom: 1px solid #ddd; }
+    th { background-color: #f4f4f4; }
+</style>
+
+<nav th:replace="fragments/navHeader :: navbar"></nav>
+
+<div class="container has-text-centered">
+    <h2 class="title is-2">Albums Sold by Artist</h2>
+
+    <table class="wbb centered" th:if="${reportInput.recordSales}">
+        <thead>
+        <tr>
+            <th>Artist Name</th>
+            <th>Album Name</th>
+            <th>Date of Sale</th>
+            <th>Units Sold</th>
+            <th>Sale Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="sale : ${reportInput.recordSales}">
+            <td th:text="${sale.artistName}"></td>
+            <td th:text="${sale.albumName}"></td>
+            <td th:text="${sale.dateOfSale}"></td>
+            <td th:text="${sale.unitsSold}"></td>
+            <td th:text="${sale.saleAmount}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p th:if="${#lists.isEmpty(reportInput.recordSales)}">No records found for that artist.</p>
+</div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

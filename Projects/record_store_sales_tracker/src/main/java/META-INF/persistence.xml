@@ -9,8 +9,8 @@
     <class>info.hccis.sample.jpa.entity.StudentSkill</class>
     <class>info.hccis.sample.jpa.entity.Invoice</class>
     <class>info.hccis.sample.jpa.entity.Customer</class>
-    <class>info.hccis.performance.jpa.entity.TicketOrder</class>
-    <class>info.hccis.performance.jpa.entity.CodeValue</class>
+    <class>info.hccis.recordstore.jpa.entity.ArtistSaleList</class>
+    <class>info.hccis.recordstore.jpa.entity.CodeValue</class>
     <properties>
       <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/cis2232_tutor"/>
       <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
