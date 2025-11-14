@@ -1,5 +1,4 @@
 package info.hccis.recordstore.util;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -13,7 +12,7 @@ import java.util.ResourceBundle;
  */
 public class DatabaseUtility {
 
-        public static boolean checkConnection() {
+    public static boolean checkConnection() {
 
         Connection conn = null;
         try {
@@ -25,7 +24,7 @@ public class DatabaseUtility {
         return true;
 
     }
-    
+
     /**
      * Get a connection to the database
      *

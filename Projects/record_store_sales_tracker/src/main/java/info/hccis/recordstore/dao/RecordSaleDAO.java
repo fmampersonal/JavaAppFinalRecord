@@ -17,9 +17,9 @@ import java.util.ArrayList;
 public class RecordSaleDAO {
 
     // JDBC connection info (adjust as needed)
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/recordstore";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/cis2232_record_store_sales_tracker";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "password";
+    private static final String DB_PASSWORD = "";
 
     /**
      * Fetch all sales for a given artist from the database.
@@ -30,8 +30,8 @@ public class RecordSaleDAO {
     public ArrayList<ArtistSaleList> selectTicketOrders(String artistName) {
         ArrayList<ArtistSaleList> salesList = new ArrayList<>();
 
-        String sql = "SELECT id, artistName, albumName, dateOfSale, unitsSold, saleAmount " +
-                "FROM recordsale WHERE artistName LIKE ?";
+        String sql = "SELECT id, artistName, albumPrice, totalCost " +
+                "FROM RecordStoreSalesTracker WHERE artistName LIKE ?";
 
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -43,10 +43,8 @@ public class RecordSaleDAO {
                     ArtistSaleList sale = new ArtistSaleList();
                     sale.setId(rs.getInt("id"));
                     sale.setArtistName(rs.getString("artistName"));
-                    sale.setAlbumName(rs.getString("albumName"));
-                    sale.setDateOfSale(rs.getString("dateOfSale"));
-                    sale.setUnitsSold(rs.getInt("unitsSold"));
-                    sale.setSaleAmount(rs.getBigDecimal("saleAmount"));
+                    sale.setAlbumName(rs.getString("albumPrice"));
+                    sale.setSaleAmount(rs.getBigDecimal("totalCost"));
 
                     salesList.add(sale);
                 }

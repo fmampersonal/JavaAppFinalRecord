@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -35,7 +36,7 @@ public class ReportController {
      * Show main report list page.
      */
     @RequestMapping("")
-    public String home(Model model) {
+    public String home(Model model, HttpSession session) {
         logger.info("Running the reports controller base method");
         return "report/list"; // main report menu view
     }

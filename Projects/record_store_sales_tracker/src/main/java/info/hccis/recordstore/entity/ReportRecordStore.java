@@ -48,11 +48,11 @@ public class ReportRecordStore {
         return recordSales != null && !recordSales.isEmpty();
     }
 
-    @Override
-    public String toString() {
-        return "ReportRecordStore{" +
-                "artistName='" + artistName + '\'' +
-                ", recordSales=" + recordSales +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "ReportRecordStore{" +
+//                "artistName='" + artistName + '\'' +
+//                ", recordSales=" + recordSales +
+//                '}';
+//    }
 }

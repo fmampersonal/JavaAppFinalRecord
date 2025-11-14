@@ -18,23 +18,13 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-end">
-
-            <!-- Tickets Dropdown -->
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a th:href="@{/ticketorder}" class="navbar-link">Tickets</a>
-                <div class="navbar-dropdown">
-                    <a th:href="@{/ticketorder}" class="navbar-item">View Orders</a>
-                    <hr class="navbar-divider">
-                </div>
-            </div>
-
             <!-- Reports Dropdown -->
             <div class="navbar-item has-dropdown is-hoverable">
                 <a th:href="@{/report}" class="navbar-link">Reports</a>
                 <div class="navbar-dropdown">
                     <!-- Updated to match your ReportController -->
-                    <a th:href="@{/report/order/dateoforder}" class="navbar-item">Orders by Date</a>
-                    <a th:href="@{/report/order/customername}" class="navbar-item">Orders by Customer</a>
+<!--                    <a th:href="@{/report/order/dateoforder}" class="navbar-item">Orders by Date</a>-->
+<!--                    <a th:href="@{/report/order/customername}" class="navbar-item">Orders by Customer</a>-->
                     <a th:href="@{/report/artist}" class="navbar-item">Artist Sales Report</a>
                     <hr class="navbar-divider">
                 </div>
