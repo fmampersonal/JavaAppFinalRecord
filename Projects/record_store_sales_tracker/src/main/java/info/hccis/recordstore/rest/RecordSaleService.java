@@ -18,6 +18,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -63,6 +64,33 @@ public class RecordSaleService {
             return Response.status(200).entity(sale).build();
         }
     }
+
+    /**
+     * Delete a sale record by ID.
+     */
+    @DELETE
+    @Path("/{id}")
+    public Response delete(@PathParam("id") int id) {
+        try {
+            Optional<ArtistSaleList> saleOptional = recordSaleRepo.findById(id);
+            if (!saleOptional.isPresent()) {
+                // Return 204 No Content if record not found
+                return Response.status(HttpURLConnection.HTTP_NO_CONTENT).build();
+            } else {
+                recordSaleRepo.delete(saleOptional.get());
+            }
+        } catch (Exception e) {
+            // Return 406 Not Acceptable if delete fails
+            return Response.status(HttpURLConnection.HTTP_NOT_ACCEPTABLE).entity(e.getMessage()).build();
+        }
+
+        // Return 200 OK if delete succeeds
+        return Response.status(HttpURLConnection.HTTP_OK)
+                .header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+                .build();
+    }
+
 
     /**
      * Create a new sale record.
