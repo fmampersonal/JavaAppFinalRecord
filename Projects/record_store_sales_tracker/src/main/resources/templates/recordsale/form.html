@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <title th:text="${sale.id == null} ? 'Add Sale' : 'Edit Sale'">Sale Form</title>
+</head>
+<body>
+<nav th:replace="fragments/navHeader :: navbar"></nav>
+
+<div class="container">
+    <h2 th:text="${sale.id == null} ? 'Add New Sale' : 'Edit Sale'"></h2>
+
+    <form th:object="${sale}"
+          th:action="${sale.id == null} ? @{/recordsale/add} : @{/recordsale/edit/{id}(id=${sale.id})}"
+          method="post">
+
+
+
+        <label>Date of Sale:</label>
+        <input type="date" th:field="*{dateOfSale}" required />
+        <br/>
+
+        <label>Customer Name:</label>
+        <input type="text" th:field="*{customerName}" required />
+        <br/>
+
+        <label>Artist Name:</label>
+        <input type="text" th:field="*{artistName}" required />
+        <br/>
+
+        <label>Album Name:</label>
+        <input type="text" th:field="*{albumName}" required />
+        <br/>
+
+        <label>Format Type:</label>
+        <select th:field="*{formatType}">
+            <option value="Vinyl">Vinyl</option>
+            <option value="CD">CD</option>
+            <option value="Cassette">Cassette</option>
+        </select>
+        <br/>
+
+        <label>Album Price:</label>
+        <input type="number" step="0.01" th:field="*{albumPrice}" required />
+        <br/>
+
+        <label>Units Sold:</label>
+        <input type="number" th:field="*{unitsSold}" required />
+        <br/>
+
+        <label>Gift Wrapped:</label>
+        <input type="checkbox" th:field="*{giftWrapped}" />
+        <br/>
+
+        <label>Subtotal:</label>
+        <input type="number" step="0.01" th:field="*{subtotal}" readonly />
+        <br/>
+
+        <label>Total Cost:</label>
+        <input type="number" step="0.01" th:field="*{totalCost}" readonly />
+        <br/>
+
+        <button type="submit" class="button is-primary">Submit</button>
+    </form>
+</div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

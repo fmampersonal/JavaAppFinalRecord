@@ -13,8 +13,6 @@
 <nav th:replace="fragments/navHeader :: navbar"></nav>
 
 <div class="container has-text-centered">
-<!--    <h2 class="title is-2">Albums Sold by Artist</h2>-->
-
     <h2 class="title is-2" th:text="#{label.report.artist.sales}">_</h2>
 
     <form th:action="@{/report/artist/submit}" method="post" class="wbb"
@@ -25,24 +23,23 @@
         <button style="display:block;margin-top:24px!important" class="centered">Submit</button>
     </form>
 
-<!--    <p th:if="${not #strings.isEmpty(message)}" th:text="#{error.message.no.data.found.name}">not found</p>-->
-<!--    &lt;!&ndash;https://stackoverflow.com/a/33106495&ndash;&gt;-->
-
     <table class="wbb centered" th:if="${reportInput.recordSales}">
         <thead>
         <tr>
             <th>Artist Name</th>
             <th>Album Price</th>
-<!--            <th>Sale Date</th>-->
-            <th>Sale Amount</th>
+            <th>Units Sold</th>
+            <th>Subtotal</th>
+            <th>Total Cost</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="sale : ${reportInput.recordSales}">
             <td th:text="${sale.artistName}"></td>
-            <td th:text="${sale.albumName}"></td>
-<!--            <td th:text="${sale.dateOfSale}"></td>-->
-            <td th:text="${sale.saleAmount}"></td>
+            <td th:text="${sale.albumPrice}"></td>
+            <td th:text="${sale.unitsSold}"></td>
+            <td th:text="${sale.subtotal}"></td>
+            <td th:text="${sale.totalCost}"></td>
         </tr>
         </tbody>
     </table>

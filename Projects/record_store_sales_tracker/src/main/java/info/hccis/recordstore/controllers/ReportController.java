@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+
 /**
  * Controller to handle record store sales reports.
  * Handles report input, output, and file writing.
@@ -103,10 +104,19 @@ public class ReportController {
                 writer.write("--------------------------------------------------");
                 writer.newLine();
                 for (ArtistSaleList sale : report.getRecordSales()) {
-                    writer.write(sale.getArtistName() + " | " + sale.getAlbumName() + " | " +
-                            sale.getDateOfSale() + " | " + sale.getUnitsSold() + " | " + sale.getSaleAmount());
+                    writer.write(
+                            sale.getDateOfSale() + " | " +
+                                    sale.getCustomerName() + " | " +
+                                    sale.getArtistName() + " | " +
+                                    sale.getFormatType() + " | " +
+                                    sale.getAlbumPrice() + " | " +
+                                    sale.getGiftWrapped() + " | " +
+                                    sale.getSubtotal() + " | " +
+                                    sale.getTotalCost()
+                    );
                     writer.newLine();
                 }
+
             }
 
             logger.info("Report written to file: " + file.getAbsolutePath());

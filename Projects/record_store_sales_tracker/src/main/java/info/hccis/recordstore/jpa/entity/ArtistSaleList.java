@@ -1,25 +1,10 @@
 package info.hccis.recordstore.jpa.entity;
 
+import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- * JPA Entity to represent a record store sale for an artist.
- *
- * @author BJM
- * @since 20251024
- */
 @Entity
-@Table(name = "recordsale")
-@XmlRootElement
+@Table(name = "RecordStoreSalesTracker")
 public class ArtistSaleList implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,53 +16,96 @@ public class ArtistSaleList implements Serializable {
     private Integer id;
 
     @Basic(optional = false)
+    @Column(name = "dateOfSale")
+    private String dateOfSale;
+
+    @Basic(optional = false)
+    @Column(name = "customerName")
+    private String customerName;
+
+    @Basic(optional = false)
     @Column(name = "artistName")
     private String artistName;
+
+    @Basic(optional = false)
+    @Column(name = "formatType")
+    private String formatType;
+
+    @Basic(optional = false)
+    @Column(name = "albumPrice")
+    private Float albumPrice;
+
+    @Basic(optional = false)
+    @Column(name = "giftWrapped")
+    private Boolean giftWrapped;
+
+    @Basic(optional = false)
+    @Column(name = "subtotal")
+    private Integer subtotal;
+
+    @Basic(optional = false)
+    @Column(name = "totalCost")
+    private Float totalCost;
+
+    @Column(name = "unitsSold")
+    private Integer unitsSold;
+
+    @Column(name = "saleAmount")
+    private Float saleAmount;
 
     @Basic(optional = false)
     @Column(name = "albumName")
     private String albumName;
 
-    @Basic(optional = false)
-    @Column(name = "dateOfSale")
-    private String dateOfSale;
+    // ----- Getters and Setters -----
+    // Add getters & setters
+    public Integer getUnitsSold() { return unitsSold; }
+    public void setUnitsSold(Integer unitsSold) { this.unitsSold = unitsSold; }
 
-    @Basic(optional = false)
-    @Column(name = "unitsSold")
-    private int unitsSold;
-
-    @Basic(optional = false)
-    @Column(name = "saleAmount")
-    private BigDecimal saleAmount;
-
-    // --- Getters & Setters ---
+    public Float getSaleAmount() { return saleAmount; }
+    public void setSaleAmount(Float saleAmount) { this.saleAmount = saleAmount; }
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
-
-    public String getArtistName() { return artistName; }
-    public void setArtistName(String artistName) { this.artistName = artistName; }
-
-    public String getAlbumName() { return albumName; }
-    public void setAlbumName(String albumName) { this.albumName = albumName; }
 
     public String getDateOfSale() { return dateOfSale; }
     public void setDateOfSale(String dateOfSale) { this.dateOfSale = dateOfSale; }
 
-    public int getUnitsSold() { return unitsSold; }
-    public void setUnitsSold(int unitsSold) { this.unitsSold = unitsSold; }
+    public String getCustomerName() { return customerName; }
+    public void setCustomerName(String customerName) { this.customerName = customerName; }
 
-    public BigDecimal getSaleAmount() { return saleAmount; }
-    public void setSaleAmount(BigDecimal saleAmount) { this.saleAmount = saleAmount; }
+    public String getArtistName() { return artistName; }
+    public void setArtistName(String artistName) { this.artistName = artistName; }
 
+    public String getFormatType() { return formatType; }
+    public void setFormatType(String formatType) { this.formatType = formatType; }
+
+    public Float getAlbumPrice() { return albumPrice; }
+    public void setAlbumPrice(Float albumPrice) { this.albumPrice = albumPrice; }
+
+    public Boolean getGiftWrapped() { return giftWrapped; }
+    public void setGiftWrapped(Boolean giftWrapped) { this.giftWrapped = giftWrapped; }
+
+    public Integer getSubtotal() { return subtotal; }
+    public void setSubtotal(Integer subtotal) { this.subtotal = subtotal; }
+
+    public Float getTotalCost() { return totalCost; }
+    public void setTotalCost(Float totalCost) { this.totalCost = totalCost; }
+
+
+    public String getAlbumName() { return albumName; }
+    public void setAlbumName(String albumName) { this.albumName = albumName; }
     @Override
     public String toString() {
         return "ArtistSaleList{" +
                 "id=" + id +
-                ", artistName='" + artistName + '\'' +
-                ", albumName='" + albumName + '\'' +
                 ", dateOfSale='" + dateOfSale + '\'' +
-                ", unitsSold=" + unitsSold +
-                ", saleAmount=" + saleAmount +
+                ", customerName='" + customerName + '\'' +
+                ", artistName='" + artistName + '\'' +
+                ", formatType='" + formatType + '\'' +
+                ", albumPrice=" + albumPrice +
+                ", giftWrapped=" + giftWrapped +
+                ", subtotal=" + subtotal +
+                ", totalCost=" + totalCost +
                 '}';
     }
 }

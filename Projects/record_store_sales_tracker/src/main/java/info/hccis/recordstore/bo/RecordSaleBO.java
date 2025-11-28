@@ -73,7 +73,7 @@ public class RecordSaleBO {
      */
     public ArtistSaleList processCost(ArtistSaleList recordSale) {
         double cost = calculateSaleAmount(recordSale.getUnitsSold());
-        recordSale.setSaleAmount(BigDecimal.valueOf(cost));
+        recordSale.setSaleAmount((float) cost); // convert double to float
         return recordSale;
     }
 
