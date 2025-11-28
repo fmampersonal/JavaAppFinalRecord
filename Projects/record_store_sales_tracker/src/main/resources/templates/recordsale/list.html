@@ -10,6 +10,14 @@
     <h2 class="title is-2">Record Sale Transactions</h2>
 
     <a th:href="@{/recordsale/add}" class="button is-primary">Add New Sale</a>
+    <form th:action="@{/recordsale/search}" method="get" style="margin-bottom: 20px;">
+        <input type="text" name="artistName" placeholder="Search by Artist Name" />
+        <input type="text" name="dateOfSale" placeholder="Search by Date (yyyy-MM-dd)" />
+        <input type="text" name="customerName" placeholder="Search by Customer Name" />
+
+        <button type="submit">Search</button>
+    </form>
+
 
     <table class="table is-striped is-hoverable" style="margin: 0 auto;">
         <thead>

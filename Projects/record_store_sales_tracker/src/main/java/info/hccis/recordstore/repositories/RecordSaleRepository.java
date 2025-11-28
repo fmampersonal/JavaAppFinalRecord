@@ -2,6 +2,8 @@ package info.hccis.recordstore.repositories;
 
 import info.hccis.recordstore.jpa.entity.ArtistSaleList;
 import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +14,7 @@ import org.springframework.stereotype.Repository;
  * @since 20251024
  */
 @Repository
-public interface RecordSaleRepository extends CrudRepository<ArtistSaleList, Integer> {
+public interface RecordSaleRepository extends JpaRepository<ArtistSaleList, Integer> {
 
     /**
      * Find all sales where the artist name contains the given string.
@@ -39,3 +41,4 @@ public interface RecordSaleRepository extends CrudRepository<ArtistSaleList, Int
      */
     List<ArtistSaleList> findByDateOfSale(String dateOfSale);
 }
+

@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+import java.util.List;
+
 
 @Controller
 @RequestMapping("/recordsale")
@@ -95,5 +97,24 @@ public class RecordSaleTransactionController {
         } else {
             return "redirect:/recordsale";
         }
+    }
+    @GetMapping("/search")
+    public String searchSales(
+            @RequestParam(value = "artistName", required = false) String artistName,
+            @RequestParam(value = "dateOfSale", required = false) String dateOfSale,
+            Model model) {
+
+        List<ArtistSaleList> sales;
+
+        if (artistName != null && !artistName.isEmpty()) {
+            sales = recordSaleRepository.findByArtistNameContaining(artistName);
+        } else if (dateOfSale != null && !dateOfSale.isEmpty()) {
+            sales = recordSaleRepository.findByDateOfSale(dateOfSale);
+        } else {
+            sales = (List<ArtistSaleList>) recordSaleRepository.findAll();
+        }
+
+        model.addAttribute("sales", sales);
+        return "recordsale/list"; // reuse the list page
     }
 }
