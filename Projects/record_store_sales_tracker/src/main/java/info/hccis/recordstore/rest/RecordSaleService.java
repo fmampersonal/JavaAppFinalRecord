@@ -21,6 +21,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.jws.WebService;
+import javax.jws.WebMethod;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

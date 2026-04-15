@@ -19,7 +19,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-
 /**
  * Controller to handle record store sales reports.
  * Handles report input, output, and file writing.
@@ -57,12 +56,11 @@ public class ReportController {
      */
     @RequestMapping("/artist/submit")
     public String reportArtistSubmit(Model model, @ModelAttribute("reportInput") ReportRecordStore report) {
-
         logger.info("Artist from input form: " + report.getArtistName());
 
-        // Fetch data from DAO
+        // Fetch data from DAO using the updated method
         RecordSaleDAO recordSaleDao = new RecordSaleDAO();
-        ArrayList<ArtistSaleList> salesList = recordSaleDao.selectTicketOrders(report.getArtistName());
+        ArrayList<ArtistSaleList> salesList = recordSaleDao.selectSalesByArtistName(report.getArtistName());
         report.setRecordSales(salesList);
 
         // Message if no data found
@@ -116,7 +114,6 @@ public class ReportController {
                     );
                     writer.newLine();
                 }
-
             }
 
             logger.info("Report written to file: " + file.getAbsolutePath());

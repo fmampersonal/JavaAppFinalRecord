@@ -11,7 +11,7 @@ public class RecordSaleDAO {
     private static final String DB_PASSWORD = "";
 
     // ----------------- READ -----------------
-    public ArrayList<ArtistSaleList> selectTicketOrders(String artistName) {
+    public ArrayList<ArtistSaleList> selectSalesByArtistName(String artistName) {
         ArrayList<ArtistSaleList> salesList = new ArrayList<>();
         String sql = "SELECT * FROM RecordStoreSalesTracker WHERE artistName LIKE ?";
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
@@ -28,6 +28,25 @@ public class RecordSaleDAO {
             e.printStackTrace();
         }
         return salesList;
+    }
+
+    // ----------------- GET Sale By ID -----------------
+    public ArtistSaleList selectSaleById(int id) {
+        ArtistSaleList sale = null;
+        String sql = "SELECT * FROM RecordStoreSalesTracker WHERE id = ?";
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    sale = mapResultSetToSale(rs);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return sale;
     }
 
     // ----------------- CREATE -----------------

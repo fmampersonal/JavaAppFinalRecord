@@ -9,15 +9,14 @@ import java.util.List;
 @WebService
 public interface RecordSaleServiceSOAP {
 
-    /**
-     * Get all sales records.
-     */
     @WebMethod
     List<ArtistSaleList> getAllSales();
 
-    /**
-     * Get a single sale by its ID.
-     */
     @WebMethod
     ArtistSaleList getSaleById(int id);
+
+    @WebMethod
+    List<ArtistSaleList> getTransactions();
+
+
 }
